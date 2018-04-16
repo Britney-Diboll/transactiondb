@@ -88,14 +88,12 @@ namespace tranactionsDB
             }
 
             //count all tranactions for a user and day
-            var count = dbContext.Transactions.Where(w => w.TimeStamp == DateTime.Today).GroupBy(g => g.AccountNumber);
-            foreach(var account in count)
-            {
-                Console.WriteLine(account.ToString());
-            }
+            var count = dbContext.Transactions.Where(w => w.TimeStamp >= DateTime.Today && w.AccountNumber == "1234").Count();
+            var count2 = dbContext.Transactions.Where(w => w.TimeStamp >= DateTime.Today && w.AccountNumber == "666").Count();
+            Console.WriteLine(count);
+            Console.WriteLine(count2);
 
             Console.ReadLine();
-
         }
     }
 }
